@@ -39,7 +39,7 @@ const books = [
       publisher: 'Dark Horse Manga',
       publishedDate: '2019-03-26T00:00:00.000+00:00',
       stockQuantity: 50,
-      coverImageUrl: '/images/kite-runner.jpg',
+      coverImageUrl: '/images/berserk.jpg',
     },
     {
       _id: '4',
@@ -57,7 +57,7 @@ const books = [
     },
     {
       _id: '5',
-      title: 'Is Everyone Hanging Out ...',
+      title: 'Is Everyone Hanging Out Without Me?',
       author: 'Mindy Kaling',
       isbn: '0307886271',
       category: 'Fiction',
@@ -66,7 +66,7 @@ const books = [
         'Mindy Kaling has lived many lives: the obedient child of immigrant professionals, a timid chubster afraid of her own bike, a Ben Affleck–impersonating Off-Broadway performer and playwright, and, finally, a comedy writer and actress prone to starting fights with her friends and coworkers with the sentence “Can I just say one last thing about this, and then I swear I’ll shut up about it?”',
       publisher: 'Crown',
       publishedDate: '2012-09-17T00:00:00.000+00:00',
-      stockQuantity: 10,
+      stockQuantity: 0,
       coverImageUrl: '/images/mindy.jpg',
     },
     {
