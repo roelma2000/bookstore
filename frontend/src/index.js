@@ -11,8 +11,8 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store'
+import { Provider } from 'react-redux'; {/* Implementing Redux: Import Provider from react-redux*/}
+import store from './store'; {/* Implementing Redux: import the store that I initially created*/}
 import HomeScreen from './screens/HomeScreen';
 import BookDetailsScreen from './screens/BookDetailsScreen';
 
@@ -28,7 +28,7 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store}> {/* Implementing Redux: Wrap the Router provider with Provider*/}
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>

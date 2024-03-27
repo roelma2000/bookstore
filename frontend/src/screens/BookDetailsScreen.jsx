@@ -1,14 +1,24 @@
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
+import { Form, Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { useGetBookDetailsQuery } from '../slices/booksApiSlice';
+import { addToCart } from '../slices/cartSlice';
 
 const BookDetailsScreen = () => {
     const { id: bookId } = useParams();
+   const dispatch = useDispatch(); //dispatch is a function that dispatches an action from the store - cartSlice
+   const navigate = useNavigate();
+    const [qty, setQty] = useState(1); // [1, function(){}, 2]
     const {data: book, isLoading, error } = useGetBookDetailsQuery(bookId);
-
+  
+    const addToCartHandler = () => {
+      dispatch(addToCart({...book, quantity: qty})); //dispatch the addToCart action with the book and quantity
+      navigate('/cart');
+    };
   return (
     <>
       <Link to='/' className='btn btn-light my-3'>
@@ -55,11 +65,34 @@ const BookDetailsScreen = () => {
                 </Row>
               </ListGroup.Item>
 
+            {book.stockQuantity > 0 && (
+              <ListGroup.Item>
+                <Row>
+                  <Col>Qty</Col>
+                  <Col>
+                    <Form.Control
+                      as='select'
+                      value={qty}
+                      onChange={(e) => setQty(Number(e.target.value))}
+                    >
+                      {[...Array(book.stockQuantity).keys()].map((x) => ( // [0, 1, 2, 3, 4]
+                      //array starts from 0, so we add 1 to x to start from 1
+                        <option key={x + 1} value={x + 1}>          
+                          {x + 1}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+            )}
+
               <ListGroup.Item>
                 <Button
                   className='btn-block'
                   type='button'
                   disabled={book.stockQuantity === 0}
+                  onClick={() => addToCartHandler()}
                 >
                   Add To Cart
                 </Button>
@@ -75,4 +108,4 @@ const BookDetailsScreen = () => {
   )
 }
 
-export default BookDetailsScreen
+export default BookDetailsScreen;
