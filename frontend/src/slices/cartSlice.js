@@ -16,11 +16,13 @@ const cartSlice = createSlice({
     reducers: {
       addToCart: (state, action) => {
         const item = action.payload;
-        const isItemExist = state.cartItems.find((i) => i._id === item._id); // Check if the item is already in the cart
-  
+        //console.log("Item: ", item.id);
+     
+        const isItemExist = state.cartItems.find((i) => i.id === item.id); // Check if the item is already in the cart
+
         if (isItemExist) {
           state.cartItems = state.cartItems.map((i) =>
-            i._id === isItemExist._id ? item : i
+            i.id === isItemExist.id ? item : i
           );
         } else {
           state.cartItems = [...state.cartItems, item]; //add the item to the cart
