@@ -11,16 +11,19 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
-import { Provider } from 'react-redux'; {/* Implementing Redux: Import Provider from react-redux*/}
-import store from './store'; {/* Implementing Redux: import the store that I initially created*/}
+import { Provider } from 'react-redux';  // Implementing Redux: Import Provider from react-redux
+import store from './store'; // Implementing Redux: import the store that I initially created
 import HomeScreen from './screens/HomeScreen';
 import BookDetailsScreen from './screens/BookDetailsScreen';
+// eslint-disable-next-line import/first
+import CartScreen from './screens/CartScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/book/:id' element={<BookDetailsScreen />} />
+      <Route path='/cart' element={<CartScreen />} />
     </Route>
   )
 );
