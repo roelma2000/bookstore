@@ -1,5 +1,5 @@
-{/* Implementing Redux: Create this boiler plate first*/}
-{/* Implementing Redux: Create constants.js define the APIs*/}
+// Implementing Redux: Create this boiler plate first
+// Implementing Redux: Create constants.js define the APIs
 import {configureStore} from '@reduxjs/toolkit';
 import { apiSlice } from './slices/apiSlice';
 import  cartSliceReducer  from './slices/cartSlice'
